@@ -21,4 +21,9 @@ deactivate
 docker compose up --build -d
 
 # Instalando bibliotecas
-python3 pip install requests
+pip3 install requests
+pip3 install SQLAlchemy
+pip3 install PyMySQL
+
+https://docs.sqlalchemy.org/en/20/core/engines.html
+https://docs.sqlalchemy.org/en/20/orm/mapping_styles.html

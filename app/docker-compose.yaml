@@ -1,11 +1,11 @@
 version: '3.1'
 services:
   mariadb:
-    container_name: mariadb-bot
+    container_name: mariadb
     image: mariadb:11.3.2
     restart: always
-    volumes:
-      - ./sql/script.sql:/docker-entrypoint-initdb.d/script.sql
+    #volumes:
+      #- ./sql/script.sql:/docker-entrypoint-initdb.d/script.sql
     environment:
       - MARIADB_DATABASE=db
       - MARIADB_USER=root
@@ -15,7 +15,7 @@ services:
 
   adminer:
     image: adminer:4.8.1
-    container_name: adminer-bot
+    container_name: adminer
     restart: always
     ports:
       - 8080:8080
