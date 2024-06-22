@@ -1,5 +1,7 @@
 from sqlalchemy import Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+import json
 
 Base = declarative_base()
 
@@ -9,6 +11,7 @@ class Categoria(Base):
 
     id = Column(Integer, primary_key=True)
     nome = Column(String, default="Tipo de categoria não informada")
+    animal = relationship("Animal", back_populates="categoria")
 
-    def __repr__(self):
-        return f"[id:{self.id}, nome:{self.nome}]"
+    def to_json(self):
+        return {"id":self.id, "nome":self.nome}

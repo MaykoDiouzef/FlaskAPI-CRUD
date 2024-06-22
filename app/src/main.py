@@ -1,46 +1,86 @@
-from controller.gerenciarCategoria import listarCategoria, inserirCategoria, editarCategoria, deletarCategoria
-from controller.gerenciarAnimal import listarAnimal, inserirAnimal, editarAnimal, deletarAnimal
+from flask import Flask, Response, request
+import json
+from model.categoria import Categoria
+from controller.gerenciarCategoria import listarCategoria, listarCategorias, inserirCategoria, editarCategoria, deletarCategoria
+from controller.gerenciarAnimal import listarAnimal, listarAnimais, inserirAnimal, editarAnimal, deletarAnimal
 
-retorno = listarCategoria()
-print(retorno)
+app = Flask(__name__)
 
-# nome="Aves"
-# #retorno = inserirCategoria(nome)
+###### Categoria ######
 
-# id=4
-# nome="Galinha"
-# retorno = editarCategoria(id, nome)
-# print(retorno)
+# listar categoria
+@app.route('/categoria/<id>', methods=['GET'])
+def listarUmaCategoria(id):
+    try:
+        lista = listarCategoria(id)
+        if lista == None:
+            return geraResponse(400, "Categoria", {}, "Categoria não encontrada")
+        else:
+            listarJson = lista.to_json()
+            return geraResponse(200, "Categoria", listarJson)
+    except Exception as error:
+        print(error)
+        return geraResponse(400, "Categoria", {}, "Erro ao listar categorias")
 
-# id = 1
-# retorno = deletarCategoria(id)
-# print(retorno)
+# listar categorias
+@app.route('/categorias', methods=['GET'])
+def listarTodasCategorias():
+    try:
+        lista = listarCategorias()
+        listaJson = [item.to_json() for item in lista]
+        return geraResponse(200, "Categorias", listaJson)
+    except Exception as error:
+        print(error)
+        return geraResponse(400, "Categoria", {}, "Erro ao listar categorias")
+    
+# inserir nova categoria
+@app.route('/categoria', methods=['POST'])
+def inserirNovaCategoria():
+    try:
+        body = request.get_json()
+        categoria = Categoria(nome=body["nome"])
+        inserirCategoria(categoria)
+        return geraResponse(201, "Categoria", categoria.to_json(), "Categoria inserida com sucesso")
+    except Exception as error:
+        print(error)
+        return geraResponse(400, "Categoria", {}, "Erro ao inserir")
 
-# retorno = listarCategoria()
-# print(retorno)
+# editar uma categoria
+@app.route('/categoria/<id>', methods=['PUT'])
+def editarUmaCategoria(id):
+    try:
+        categoria = listarCategoria(id)
+        body = request.get_json()
+        if('nome' in body):
+            categoria.nome = body['nome']
+            editarCategoria(categoria)
+        return geraResponse(200, "Categoria", categoria.to_json(), "Categoria editada com sucesso")
+    except Exception as error:
+        print(error)
+        return geraResponse(400, "Categoria", {}, "Erro ao editar categoria")
 
-retorno = listarAnimal()
-print(retorno)
+# deletar uma categoria
+@app.route('/categoria/<id>', methods=['DELETE'])
+def deletarUmaCategoria(id):
+    try:
+        categoria = listarCategoria(id)
+        deleta = deletarCategoria(categoria)
+        if deleta:
+            return geraResponse(200, "Categoria", categoria.to_json(), "Categoria deletada com sucesso")
+        else:
+            return geraResponse(400, "Categoria", categoria.to_json(), "Categoria não existe ou está vinculada à um animal")
+    except Exception as error:
+        print(error)
+        return geraResponse(400, "Categoria", {}, "Erro ao deletar categoria")
 
-# nome = "Nininha"
-# idade = 2
-# sexo = "Feminino"
-# categoriaId = 2
-# retorno = inserirAnimal(nome, sexo, idade, categoriaId)
-# print(retorno)
+# Gera resposta em json para o usuario
+def geraResponse(status, nomeConteudo, conteudo, mensagem=False):
+    body = {}
+    body[nomeConteudo] = conteudo
+    if(mensagem):
+        body["mensagem"] = mensagem
+    return Response(json.dumps(body), status=status, mimetype="application/json")
 
-id = 2
-nome = "Dogão"
-idade = 3
-sexo = "Masculino"
-categoriaId = 1
-retorno = editarAnimal(id, nome, sexo, idade, categoriaId)
-
-
-
-# retorno = deletarAnimal(4)
-# print(retorno)
-
-
-retorno = listarAnimal()
-print(retorno)
+# Inicia execução do Flask API
+if __name__ == "__main__":
+    app.run()
