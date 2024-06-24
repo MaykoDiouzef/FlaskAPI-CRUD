@@ -3,7 +3,7 @@
 
 Lançado em 2010 e desenvolvido por Armin Ronacher, o Flask é um micro-framework destinado principalmente a pequenas aplicações com requisitos mais simples, como por exemplo, a criação de um site básico.
 
-![Armin Ronacher]([[https://upload.wikimedia.org/wikipedia/commons/4/4e/Armin_Ronacher.jpg](https://images.app.goo.gl/W7pkLioF2qsR4ozJ6)](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Armin_Ronacher_in_August_2014.jpg/330px-Armin_Ronacher_in_August_2014.jpg))
+![Armin Ronacher]((https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Armin_Ronacher_in_August_2014.jpg/330px-Armin_Ronacher_in_August_2014.jpg))
 
 Possui um núcleo simples e expansível que permite que um projeto possua apenas os recursos necessários para sua execução (conforme surja a necessidade, um novo pacote pode ser adicionado para incrementar as funcionalidades da aplicação).
 
