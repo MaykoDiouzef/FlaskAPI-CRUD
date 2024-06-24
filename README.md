@@ -32,7 +32,6 @@ Antes de começar, você vai precisar ter o seguinte instalado em sua máquina:
 
 Para instalar o Flask, você pode usar o pip. Abra seu terminal e execute o seguinte comando:
 
-```bash
   pip install Flask
 
 ## Configuração do Ambiente Virtual
