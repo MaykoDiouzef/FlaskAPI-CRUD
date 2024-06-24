@@ -21,6 +21,59 @@ Por possuir uma arquitetura muito simples (um único arquivo inicial) os projeto
 ### Aplicações Robustes
 Apesar de ser um micro-framework, o Flask permite a criação de aplicações robustas, já que é totalmente personalizável, permitindo, caso necessário, a criação de uma arquitetura mais definida.
 
+## Pré-requisitos
+
+Antes de começar, você vai precisar ter o seguinte instalado em sua máquina:
+
+- [Python 3.6+](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installation/)
+
+## Instalação
+
+Para instalar o Flask, você pode usar o pip. Abra seu terminal e execute o seguinte comando:
+
+```bash
+pip install Flask
+
+## Configuração do Ambiente Virtual
+
+Para evitar conflitos entre dependências e manter seu projeto organizado, é recomendável utilizar um ambiente virtual.
+
+### Instalando o módulo venv
+
+Para instalar o módulo venv no Linux, use o seguinte comando:
+
+  sudo apt install python3-venv
+
+### Criando o Ambiente Virtual
+
+Dentro do diretório do seu projeto, crie um ambiente virtual:
+
+  python -m venv ambiente-virtual
+
+### Ativando o Ambiente Virtual
+
+#### Windows
+
+Para ativar o ambiente virtual no Windows, use um dos seguintes comandos, dependendo do seu terminal:
+
+  .\ambiente-virtual\Scripts\activate.bat
+
+Para desativar o ambiente virtual no Windows, use:
+
+  deactivate
+
+#### Linux e Mac
+
+Para ativar o ambiente virtual no Linux ou Mac, use o seguinte comando:
+
+  source ambiente-virtual/bin/activate
+
+Para desativar o ambiente virtual no Linux ou Mac, use:
+
+  deactivate
+
+
 # apt install python3-venv
 
 # python -m venv ambiente-virtual
