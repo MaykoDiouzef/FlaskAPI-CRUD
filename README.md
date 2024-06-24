@@ -26,6 +26,11 @@ Apesar de ser um micro-framework, o Flask permite a criação de aplicações ro
 Antes de começar, você vai precisar ter o seguinte instalado em sua máquina:
 
 - [Python 3.6+](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installation/)
+
+## Instalação do PIP
+
+      sudo apt install python3-pip
 
 ## Configuração do Ambiente Virtual
 
