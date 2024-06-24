@@ -4,8 +4,8 @@ services:
     container_name: mariadb
     image: mariadb:11.3.2
     restart: always
-    #volumes:
-      #- ./sql/script.sql:/docker-entrypoint-initdb.d/script.sql
+    volumes:
+      - ./sql/script.sql:/docker-entrypoint-initdb.d/script.sql
     environment:
       - MARIADB_DATABASE=db
       - MARIADB_USER=root

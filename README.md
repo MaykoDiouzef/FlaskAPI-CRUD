@@ -46,7 +46,7 @@ Para instalar o módulo venv no Linux, use o seguinte comando:
 
 ### Criando o Ambiente Virtual
 
-Dentro do diretório do seu projeto, crie um ambiente virtual:
+Dentro do diretório do seu projeto, onde está localizado o arquivo main.py, crie um ambiente virtual:
 
       python -m venv ambiente-virtual
 
@@ -72,31 +72,8 @@ Para desativar o ambiente virtual no Linux ou Mac, use:
 
       deactivate
 
-
-# apt install python3-venv
-
-# python -m venv ambiente-virtual
-
-# Windows
-# Para ativar
-.\ambiente-virtual\Scripts\activate.bat
-.\ambiente-virtual\Scripts\Activate.ps1
-# Para desativar
-deactivate
-
-# Linux e Mac
-# Para ativar
-source ambiente-virtual/bin/activate
-# Para desativar
-deactivate
-
 # Comando
-docker compose up --build -d
+      docker compose up --build -d
 
 # Instalando bibliotecas
-pip3 install requests
-pip3 install SQLAlchemy
-pip3 install PyMySQL
-
-https://docs.sqlalchemy.org/en/20/core/engines.html
-https://docs.sqlalchemy.org/en/20/orm/mapping_styles.html
+      pip install -r requirements.txt

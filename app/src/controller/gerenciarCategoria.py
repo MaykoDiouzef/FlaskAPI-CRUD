@@ -14,9 +14,9 @@ def listarCategorias():
     session.close()
     return categoria
 
-def inserirCategoria(nome):
+def inserirCategoria(categoria):
     session = Session()
-    novaCategoria = Categoria(nome=nome)
+    novaCategoria = Categoria(nome=categoria.nome)
     session.add(novaCategoria)
     session.commit()
     session.close()
@@ -27,7 +27,7 @@ def editarCategoria(categoria):
     session.query(Categoria).filter(Categoria.id==categoria.id).update({"nome": categoria.nome})
     session.commit()
     session.close()
-    return True 
+    return True
 
 def deletarCategoria(categoria):
     verifica = buscarDeletar(categoria.id)

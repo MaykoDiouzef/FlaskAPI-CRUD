@@ -11,7 +11,6 @@ class Categoria(Base):
 
     id = Column(Integer, primary_key=True)
     nome = Column(String, default="Tipo de categoria não informada")
-    animal = relationship("Animal", back_populates="categoria")
 
     def to_json(self):
         return {"id":self.id, "nome":self.nome}
