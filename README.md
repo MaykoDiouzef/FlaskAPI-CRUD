@@ -32,7 +32,7 @@ Antes de começar, você vai precisar ter o seguinte instalado em sua máquina:
 
 Para instalar o Flask, você pode usar o pip. Abra seu terminal e execute o seguinte comando:
 
-  pip install Flask
+      pip install Flask
 
 ## Configuração do Ambiente Virtual
 
@@ -42,13 +42,13 @@ Para evitar conflitos entre dependências e manter seu projeto organizado, é re
 
 Para instalar o módulo venv no Linux, use o seguinte comando:
 
-  sudo apt install python3-venv
+      sudo apt install python3-venv
 
 ### Criando o Ambiente Virtual
 
 Dentro do diretório do seu projeto, crie um ambiente virtual:
 
-  python -m venv ambiente-virtual
+      python -m venv ambiente-virtual
 
 ### Ativando o Ambiente Virtual
 
@@ -56,21 +56,21 @@ Dentro do diretório do seu projeto, crie um ambiente virtual:
 
 Para ativar o ambiente virtual no Windows, use um dos seguintes comandos, dependendo do seu terminal:
 
-  .\ambiente-virtual\Scripts\activate.bat
+      .\ambiente-virtual\Scripts\activate.bat
 
 Para desativar o ambiente virtual no Windows, use:
 
-  deactivate
+      deactivate
 
 #### Linux e Mac
 
 Para ativar o ambiente virtual no Linux ou Mac, use o seguinte comando:
 
-  source ambiente-virtual/bin/activate
+      source ambiente-virtual/bin/activate
 
 Para desativar o ambiente virtual no Linux ou Mac, use:
 
-  deactivate
+      deactivate
 
 
 # apt install python3-venv
