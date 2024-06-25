@@ -28,6 +28,10 @@ Antes de começar, você vai precisar ter o seguinte instalado em sua máquina:
 - [Python 3.6+](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installation/)
 
+## Preparação do Ambiente
+
+Primeiro, crie uma pasta chamada "Flask" na área de trabalho e abra o terminal dentro dessa pasta.
+
 ## Instalação do PIP
 
       sudo apt install python3-pip
