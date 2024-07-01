@@ -38,7 +38,7 @@ Pip é um sistema de gerenciamento de pacotes padrão, usado para instalar e ger
 
 Abrir o terminal, pode ser em qualquer diretório e digitar/colar o seguite comando:
 
-      sudo apt install python3-pip
+    sudo apt install python3-pip
 
 ## 4 - Configuração do Ambiente Virtual
 
@@ -50,14 +50,14 @@ O *venv* é uma biblioteca Python padrão, capaz de criar ambiente virtual, disp
 
 Para instalar a biblioteca venv no Windows, Linux ou Mac, abra o terminal use o seguinte comando:
 
-      sudo apt install python3-venv
+    sudo apt install python3-venv
 
 ### 4.2 - Criando o Ambiente Virtual
 
 Dentro do diretório do seu projeto, onde está localizado o arquivo main.py, *sendo este o diretório raiz do projeto*, crie um ambiente virtual:  
 *Observação: O **nome** do ambiente virtual pode ser de seu escolha, neste projeto o nome será **ambiente-virtual***
 
-      python3 -m venv ambiente-virtual
+    python3 -m venv ambiente-virtual
 
 ### 4.3 - Ativando o Ambiente Virtual
 
@@ -67,18 +67,18 @@ Para ativar o ambiente virtual no Windows, use um dos seguintes comandos, depend
 *Observação: O **Visual Studio Code** no **Windows** usa o **Terminal PowerShell***
 
 Terminal normal
-
-      .\ambiente-virtual\Scripts\activate.bat
+    
+    .\ambiente-virtual\Scripts\activate.bat
 
 Terminal PowerShell
 
-      .\ambiente-virtual\Scripts\Activate.ps1
+    .\ambiente-virtual\Scripts\Activate.ps1
 
 #### 4.3.2 - Linux e Mac
 
 Para ativar o ambiente virtual no Linux ou Mac, use o seguinte comando:
 
-      source ambiente-virtual/bin/activate
+    source ambiente-virtual/bin/activate
 
 #### 4.3.3 - Ambiente virtual ativo
 
@@ -91,7 +91,7 @@ Como deve ficar se o ambiente virtual estiver ativo:
 ### 4.4 - Desativando o Ambiente Virtual
 Para desativar o ambiente virtual no Windows, Linux ou Mac, use:
 
-      deactivate
+    deactivate
 
 # 5 - Instalando bibliotecas
 
@@ -101,21 +101,19 @@ Dentro do arquivo *requirements.txt* deve conter todas as bibliotecas que vamos 
 
 Abrir o arquivos *requirements.txt* e digitar/colar a lista de bibliotecas utilizadas:
 
-      Flask==3.0.3
-      PyMySQL==1.1.1
-      requests==2.32.3
-      responses==0.25.3
-      SQLAlchemy==2.0.31
+    Flask==3.0.3
+    PyMySQL==1.1.1
+    requests==2.32.3
+    responses==0.25.3
+    SQLAlchemy==2.0.31
 
 ## 5.2 - Comando de instalação
 
 Para instalar as bibliotecas, é necessario abrir o terminal na pasta raiz que o *requirements.txt* está localizado e executar o seguinte comando:  
 **Atenção: Este comando deve ser executado dentro do ambiente virtual, caso contrario, todas as bibliotecas serão instaladas na maquina.**
 
-      pip install -r requirements.txt
+    pip install -r requirements.txt
 
 
 # 6 - Ambiente Docker
-      docker compose up --build -d
-
-
+    docker compose up -d
