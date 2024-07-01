@@ -3,7 +3,7 @@
 
 Lançado em 2010 e desenvolvido por Armin Ronacher, o Flask é um micro-framework destinado principalmente a pequenas aplicações com requisitos mais simples, como por exemplo, a criação de um site básico.
 
-![Armin Ronacher](imagens\1200px-Armin_Ronacher_in_August_2014.jpg)
+![Armin Ronacher](imagens/1200px-Armin_Ronacher_in_August_2014.jpg)
 
 Possui um núcleo simples e expansível que permite que um projeto possua apenas os recursos necessários para sua execução (conforme surja a necessidade, um novo pacote pode ser adicionado para incrementar as funcionalidades da aplicação).
 
@@ -84,8 +84,8 @@ Para ativar o ambiente virtual no Linux ou Mac, use o seguinte comando:
 
 Como deve ficar se o ambiente virtual estiver ativo:
 
-![Ativo no Windows - Normal](imagens\normal.png)
-![Ativo no Linux](imagens\linux.png)
+![Ativo no Windows - Normal](imagens/normal.png)
+![Ativo no Linux](imagens/linux.png)
 
 
 ### 4.4 - Desativando o Ambiente Virtual
