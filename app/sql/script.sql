@@ -8,30 +8,28 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 -- -----------------------------------------------------
 -- Database db
 -- -----------------------------------------------------
-CREATE DATABASE IF NOT EXISTS `db` DEFAULT CHARACTER SET utf8 ;
-USE `db`;
+CREATE DATABASE IF NOT EXISTS `db-flask` DEFAULT CHARACTER SET utf8 ;
+USE `db-flask`;
 
 -- -----------------------------------------------------
--- Tabela db.categoria
+-- Tabela db.usuario
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `categoria` (
+CREATE TABLE IF NOT EXISTS `usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) DEFAULT 'Não Informado',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- -----------------------------------------------------
--- Tabela db.animal
+-- Tabela db.produto
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `animal` (
+CREATE TABLE IF NOT EXISTS `produto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `categoriaId` int(11) NOT NULL,
+  `usuarioId` int(11) NOT NULL,
   `nome` varchar(100) DEFAULT 'Não Informado',
-  `sexo` varchar(15) DEFAULT 'Não Informado',
-  `idade` int(11) DEFAULT 0,
   PRIMARY KEY (`id`),
-  KEY `fk_animal_categoria` (`categoriaId`),
-  CONSTRAINT `fk_animal_categoria` FOREIGN KEY (`categoriaId`) REFERENCES `categoria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_produto_usuario` (`usuarioId`),
+  CONSTRAINT `fk_produto_usuario` FOREIGN KEY (`usuarioId`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;

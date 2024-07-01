@@ -6,11 +6,11 @@ import json
 Base = declarative_base()
 
 # Entidades
-class Categoria(Base):
-    __tablename__ = "categoria"
+class Usuario(Base):
+    __tablename__ = "usuario"
 
     id = Column(Integer, primary_key=True)
-    nome = Column(String, default="Tipo de categoria não informada")
+    nome = Column(String, default="Usuario não informado")
 
     def to_json(self):
         return {"id":self.id, "nome":self.nome}
