@@ -1,12 +1,14 @@
 import json
 from flask import Blueprint, Response, request
-from model.dao.produto import Produto
-from model.dto.produto import listarProduto, listarProdutos, inserirProduto, editarProduto, deletarProduto
+from config.auth import auth
+from model.dto.produto import Produto
+from model.dao.produto import listarProduto, listarProdutos, inserirProduto, editarProduto, deletarProduto
 
 bp = Blueprint('produto', __name__)
 
-### inserir novo produto ###
+######### inserir novo produto #########
 @bp.route('/produto', methods=['POST'])
+@auth.login_required
 def inserirNovoProduto():
     try:
         body = request.get_json()
@@ -16,8 +18,9 @@ def inserirNovoProduto():
     except Exception as error:
         return geraResponse(400, "Produto", {}, f"Erro ao inserir novo produto: {error}")
 
-### listar um produto ###
+######### listar um produto #########
 @bp.route('/produto/<id>', methods=['GET'])
+@auth.login_required
 def listarUmProduto(id):
     try:
         lista = listarProduto(id)
@@ -29,8 +32,9 @@ def listarUmProduto(id):
     except Exception as error:
         return geraResponse(400, "Produto", {}, f"Erro ao listar o produto: {error}")
 
-### listar produtos ###
+######### listar produtos #########
 @bp.route('/produtos', methods=['GET'])
+@auth.login_required
 def listarTodosProdutos():
     try:
         lista = listarProdutos()
@@ -39,39 +43,40 @@ def listarTodosProdutos():
     except Exception as error:
         return geraResponse(400, "Produtos", {}, f"Erro ao listar produtos: {error}")
 
-### editar um produto ###
+######### editar um produto #########
 @bp.route('/produto/<id>', methods=['PUT'])
+@auth.login_required
 def editarUmProduto(id):
     try:
-        produto = listarProduto(id)
         body = request.get_json()
         if('nome' in body):
-            produto.nome = body['nome']
-            aux = editarProduto(produto)
-            if aux:
+            nome = body['nome']
+            produto = editarProduto(id, nome)
+            if produto:
                 return geraResponse(200, "Produto", produto.to_json(), "Produto editado com sucesso")
             else:
-                return geraResponse(400, "Produto", {}, "Erro ao editar produto")
+                return geraResponse(400, "Produto", {}, f"Produto de {id} não existe")
         else:
-            return geraResponse(400, "Produto", {}, "Erro ao editar produto")
+            return geraResponse(400, "Produto", {}, "Informe nome do produto corretamente")
     except Exception as error:
         return geraResponse(400, "Produto", {}, f"Erro ao editar produto: {error}")
 
-### deletar um produto ###
+######### deletar um produto #########
 @bp.route('/produto/<id>', methods=['DELETE'])
+@auth.login_required
 def deletarUmProduto(id):
     try:
         deleta = deletarProduto(id)
         if deleta:
             return geraResponse(200, "Produto", {}, "Produto deletado com sucesso")
         elif deleta == False:
-            return geraResponse(400, "Produto", {}, "Produto não existe")
+            return geraResponse(400, "Produto", {}, f"Produto de {id} não existe")
         else:
             return geraResponse(400, "Produto", {}, "Erro ao deletar produto")
     except Exception as error:
         return geraResponse(400, "Produto", {}, f"Erro ao deletar produto: {error}")
 
-# Gera resposta em json para o usuario
+######### Gera resposta em json para o usuário #########
 def geraResponse(status, nomeConteudo, conteudo, mensagem=False):
     body = {}
     body[nomeConteudo] = conteudo

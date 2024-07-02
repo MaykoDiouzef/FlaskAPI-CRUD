@@ -1,12 +1,14 @@
 import json
-from flask import Blueprint, Response, request
-from model.dao.usuario import Usuario
-from model.dto.usuario import listarUsuario, listarUsuarios, inserirUsuario, editarUsuario, deletarUsuario
+from flask import Blueprint, Response, jsonify, request
+from config.auth import auth
+from model.dto.usuario import Usuario
+from model.dao.usuario import listarUsuario, listarUsuarios, inserirUsuario, editarUsuario, deletarUsuario
 
 bp = Blueprint('usuario', __name__)
 
-### inserir novo usuario ###
+######### inserir novo produto #########
 @bp.route('/usuario', methods=['POST'])
+@auth.login_required
 def inserirNovoUsuario():
     try:
         body = request.get_json()
@@ -16,8 +18,9 @@ def inserirNovoUsuario():
     except Exception as error:
         return geraResponse(400, "Usuario", {}, f"Erro ao inserir: {error}")
 
-### listar um usuario ###
+######### listar um produto #########
 @bp.route('/usuario/<id>', methods=['GET'])
+@auth.login_required
 def listarUmUsuario(id):
     try:
         lista = listarUsuario(id)
@@ -29,8 +32,9 @@ def listarUmUsuario(id):
     except Exception as error:
         return geraResponse(400, "Usuario", {}, f"Erro ao listar usuarios: {error}")
 
-### listar todos usuarios ###
+######### listar produtos #########
 @bp.route('/usuarios', methods=['GET'])
+@auth.login_required
 def listarTodosUsuarios():
     try:
         lista = listarUsuarios()
@@ -39,8 +43,9 @@ def listarTodosUsuarios():
     except Exception as error:
         return geraResponse(400, "Usuario", {}, f"Erro ao listar usuarios: {error}")
 
-### editar um usuario ###
+######### editar um produto #########
 @bp.route('/usuario/<id>', methods=['PUT'])
+@auth.login_required
 def editarUmUsuario(id):
     try:
         usuario = listarUsuario(id)
@@ -55,22 +60,22 @@ def editarUmUsuario(id):
     except Exception as error:
         return geraResponse(400, "Usuario", {}, f"Erro ao editar usuario: {error}")
 
-### deletar um usuario ###
+######### deletar um produto #########
 @bp.route('/usuario/<id>', methods=['DELETE'])
+@auth.login_required
 def deletarUmUsuario(id):
     try:            
         deleta = deletarUsuario(id)
-        if deleta:
+        if deleta: ######### True #########
             return geraResponse(200, "Usuario", {}, "Usuario deletado com sucesso")
-        elif deleta == None:
-            return geraResponse(400, "Usuario", {}, "Usuario não existe")
-        else:
+        elif deleta == False: ######### False #########
             return geraResponse(400, "Usuario", {}, "Usuario está vinculado à um produto")
+        else: ######### None #########
+            return geraResponse(400, "Usuario", {}, "Usuario não existe")
     except Exception as error:
         return geraResponse(400, "Usuario", {}, f"Erro ao deletar usuario: {error}")
 
-
-# Gera resposta em json para o usuario
+######### Gera resposta em json para o usuário #########
 def geraResponse(status, nomeConteudo, conteudo, mensagem=False):
     body = {}
     body[nomeConteudo] = conteudo
