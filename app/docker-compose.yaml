@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  mariadb:
+    container_name: mariadbflask
+    image: mariadb:11.3.2
+    restart: always
+    volumes:
+      - ./sql/script.sql:/docker-entrypoint-initdb.d/script.sql
+    environment:
+      - MARIADB_DATABASE=db-flask
+      - MARIADB_USER=root
+      - MARIADB_ROOT_PASSWORD=123456789
+    ports:
+      - "3305:3306"
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: adminerflask
+    restart: always
+    ports:
+      - 8081:8080
