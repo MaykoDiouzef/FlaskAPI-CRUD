@@ -33,11 +33,19 @@ Antes de começar, você vai precisar ter o seguinte instalado em sua máquina:
 
 Primeiro, [baixe o repositorio](https://github.com/MaykoDiouzef/FlaskAPI-CRUD/archive/refs/heads/main.zip) e copie a pasta "flaskAPI" para a área de trabalho.
 
-# 3 - Configuração do Ambiente Virtual
+# 3 - Instalação do PIP
+
+Pip é um sistema de gerenciamento de pacotes padrão, usado para instalar e gerenciar pacotes de software escritos em Python.
+
+Para instalar o pip no Linux, abra o terminal e digite/cole o seguite comando:
+
+    sudo apt install python3-pip
+
+# 4 - Configuração do Ambiente Virtual
 
 Um ambiente virtual é uma instância independente do Python, que permite isolar as bibliotecas e dependências de um projeto específico. Isso é útil para evitar conflitos entre diferentes versões de pacotes e garantir que o projeto seja executado consistentemente, independentemente do ambiente de desenvolvimento.
 
-## 3.1 - Instalando a biblioteca venv
+## 4.1 - Instalando a biblioteca venv
 
 O *venv* é uma biblioteca Python padrão, capaz de criar ambiente virtual, disponível nas versões 3.3 e posteriores.
 
@@ -45,16 +53,16 @@ Para instalar a biblioteca venv no Windows, Linux ou Mac, abra o terminal em qua
 
     sudo apt install python3-venv
 
-## 3.2 - Criando o Ambiente Virtual
+## 4.2 - Criando o Ambiente Virtual
 
 Dentro do diretório do seu projeto, onde está localizado o arquivo main.py, *sendo este o diretório raiz do projeto*, crie um ambiente virtual:  
 *Observação: O **nome** do ambiente virtual pode ser de seu escolha, neste projeto o nome será **ambiente-virtual***
 
     python3 -m venv ambiente-virtual
 
-## 3.3 - Ativando o Ambiente Virtual
+## 4.3 - Ativando o Ambiente Virtual
 
-### 3.3.1 - Windows
+### 4.3.1 - Windows
 
 Para ativar o ambiente virtual no Windows, use um dos seguintes comandos, dependendo do seu terminal:  
 *Observação: O **Visual Studio Code** no **Windows** usa o **Terminal PowerShell***
@@ -67,13 +75,13 @@ Terminal PowerShell
 
     .\ambiente-virtual\Scripts\Activate.ps1
 
-### 3.3.2 - Linux e Mac
+### 4.3.2 - Linux e Mac
 
 Para ativar o ambiente virtual no Linux ou Mac, use o seguinte comando:
 
     source ambiente-virtual/bin/activate
 
-### 3.3.3 - Ambiente virtual ativo
+### 4.3.3 - Ambiente virtual ativo
 
 Como deve ficar se o ambiente virtual estiver ativo:
 
@@ -81,25 +89,16 @@ Como deve ficar se o ambiente virtual estiver ativo:
 ![Ativo no Linux](imagens/linux.png)
 
 
-## 3.4 - Desativando o Ambiente Virtual
+## 4.4 - Desativando o Ambiente Virtual
 Para desativar o ambiente virtual no Windows, Linux ou Mac, use:
 
     deactivate
 
-# 4 - Instalando bibliotecas
+# 5 - Instalando bibliotecas
 
 Dentro do arquivo *requirements.txt* deve conter todas as bibliotecas que vamos utilizar dentro do projeto, para não ter a necessidade de instalar uma por uma manualmente. Vamos instalar todas juntas,  pedido para o pip instalar todas bibliotecas que foram listadas dentro do arquivo, necessário informar o nome e se quiser, a vesão da biblioteca.
 
-## 4.1 - Instalação do PIP
-
-Pip é um sistema de gerenciamento de pacotes padrão, usado para instalar e gerenciar pacotes de software escritos em Python.
-
-Para instalar o pip no ambiente virtual, digite/cole o seguite comando:  
-**Atenção: Este comando deve ser executado dentro do ambiente virtual, caso contrario, o pip será instalado na maquina.**
-
-    sudo apt install python3-pip
-
-## 4.2 - Lista de bibliotecas
+## 5.1 - Lista de bibliotecas
 
 Abrir o arquivo `requirements.txt`, que está no diretório ```flaskAPI/src/requirements.txt``` e digite/cole a lista de bibliotecas utilizadas:
 
@@ -110,20 +109,20 @@ Abrir o arquivo `requirements.txt`, que está no diretório ```flaskAPI/src/requ
     requests==2.32.3
     responses==0.25.3
 
-## 4.3 - Comando de instalação
+## 5.2 - Comando de instalação
 
 Para instalar as bibliotecas no ambiente virtual, digite/cole o seguinte comando:  
 **Atenção: Este comando deve ser executado dentro do ambiente virtual, caso contrario, todas as bibliotecas serão instaladas na maquina.**
 
     pip install -r requirements.txt
 
-# 5 - SQL MariaDB
+# 6 - SQL MariaDB
 
 O *MariaDB* Server é um dos bancos de dados relacionais de código aberto mais populares. Ele é feito pelos desenvolvedores originais do *MySQL* e tem garantia de permanecer de código aberto. Ele faz parte da maioria das ofertas de nuvem e é o padrão na maioria das distribuições Linux.
 
-## 5.1 - Código SQL MariaDB
+## 6.1 - Código SQL MariaDB
 
-Salvar o código SQL MariaDB no respequitivo diretório ```flaskAPI/sql/script.sql```
+Salvar o código SQL MariaDB no arquivo `script.sql` no diretório ```flaskAPI/sql/script.sql```
 
     -- Adminer 4.8.1 MySQL 11.3.2-MariaDB-1:11.3.2+maria~ubu2204 dump
 
@@ -161,63 +160,70 @@ Salvar o código SQL MariaDB no respequitivo diretório ```flaskAPI/sql/script.s
     CONSTRAINT `fk_produto_usuario` FOREIGN KEY (`usuarioId`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
-# 6 - Ambiente Docker
+# 7 - Ambiente Docker
 
-## 6.1 - Listar conteiners Docker
+## 7.1 - Novos conteiners Docker
 
-    docker ps -a
-
-## 6.2 - Parar container Docker
-
-Substituir o `ContainerID` pelo que será exibido no terminal, sendo necessário apenas as primeiras letras/numeros do `Container Id`
-
-    docker stop ContainerID
-
-## 6.3 - Deletar container Docker
-
-Substituir o `ContainerID` pelo que será exibido no terminal, sendo necessário apenas as primeiras letras/numeros do `Container Id`
-
-    docker rm ContainerID
-
-## 6.4 - Novos conteiners Docker
-
-### 6.4.1 - Código YAML
+### 7.1.1 - Código YAML
 
 Abrir o arquivo `docker-compose.yaml` no diretório `flaskAPI/docker-compose.yaml` e digitar/colar o seguinte código:
 
     version: '3.1'
     services:
-    mariadb:
-        container_name: mariadb
-        image: mariadb:11.3.2
-        restart: always
-        volumes:
-        - ./sql/script.sql:/docker-entrypoint-initdb.d/script.sql
-        environment:
-        - MARIADB_DATABASE=db-flask
-        - MARIADB_USER=root
-        - MARIADB_ROOT_PASSWORD=123456789
-        ports:
-        - "3309:3306"
+        mariadb:
+            container_name: mariadbflask
+            image: mariadb:11.3.2
+            restart: always
+            volumes:
+            - ./sql/script.sql:/docker-entrypoint-initdb.d/script.sql
+            environment:
+            - MARIADB_DATABASE=db-flask
+            - MARIADB_USER=root
+            - MARIADB_ROOT_PASSWORD=123456789
+            ports:
+            - "3305:3306"
 
-    adminer:
-        image: adminer:4.8.1
-        container_name: adminer
-        restart: always
-        ports:
-        - 8080:8080
+        adminer:
+            image: adminer:4.8.1
+            container_name: adminerflask
+            restart: always
+            ports:
+            - 8081:8080
 
-### 6.4.2 - Criar containers Docker
 
-Abrir o terninal no diretório que contém o arquivo `docker-compose.yaml` no diretório `flaskAPI/docker-compose.yaml`, para criar os novos containers, depois digitar/colar o seguinte comando:
+### 7.1.2 - Criar containers Docker
+
+Para criar os novos containers, abrir o terninal no diretório `flaskAPI/` que contém o arquivo `docker-compose.yaml` e depois digitar/colar o seguinte comando:
 
     docker compose up -d
 
-### 6.4.3 - Visualizar os novos conteiners Docker
+### 7.1.3 - Visualizar os novos conteiners Docker
 
     docker ps -a
 
-# 7 - Início do projeto
+Caso não tenha ocorrido nenhum erro, vá para o tópico **8**
+
+## 7.2 - Correções de errro
+### 7.2.1 - Listar conteiners Docker
+
+    docker ps -a
+
+### 7.2.2 - Parar container Docker
+
+Substituir o `ContainerID` pelo que será exibido no terminal, sendo necessário apenas as primeiras letras/numeros do `Container Id`
+
+    docker stop ContainerID
+
+### 7.2.3 - Deletar container Docker
+
+Substituir o `ContainerID` pelo que será exibido no terminal, sendo necessário apenas as primeiras letras/numeros do `Container Id`
+
+    docker rm ContainerID
+
+Após deletar conteiners, volte no tópico **7.1**
+
+
+# 8 - Início do projeto
 
 Abra a arquivo `main.py` no diretório `flaskAPI/src/main.py` e digitar/colar o seguinte código:
 
@@ -230,10 +236,10 @@ Abra a arquivo `main.py` no diretório `flaskAPI/src/main.py` e digitar/colar o 
     if __name__ == "__main__":
         app.run(debug=True)
 
-# 8 - SQLAlchemy
+# 9 - SQLAlchemy
 ***SQLAlchemy*** é um ORM (*Object Relational Mapper*), ORM é uma técnica de mapeamento objeto relacional que permite fazer uma relação dos objetos com os dados que os mesmos representam.
 
-## 8.1 - Connection
+## 9.1 - Connection
 No arquivo `connection.py`, localizado em ```flaskAPI/src/config/connection.py``` digitar/colar o código necessário para estabelecer uma conexão com o banco de dados:
 
     from sqlalchemy import create_engine
@@ -255,11 +261,11 @@ No arquivo `connection.py`, localizado em ```flaskAPI/src/config/connection.py``
     engine = create_engine(f"{dialect}+{driver}://{user}:{password}@{host}:{port}/{dbname}")
     Session = sessionmaker(bind=engine)
 
-## 8.2 - Model
-### 8.2.1 - DTO
+## 9.2 - Model
+### 9.2.1 - DTO
 DTO (Data Transfer Object) é um padrão de design usado para transferir dados entre subsistemas ou camadas de uma aplicação.
 
-#### 8.2.1.1 - Usuário
+#### 9.2.1.1 - Usuário
 Abrir o arquivo `usuario.py` no diretório ```flaskAPI/src/model/dto/usuario.py``` e digitar/colar o código de criação da classe Usuário:
 
     from sqlalchemy import Column, String, Integer
@@ -280,12 +286,12 @@ Abrir o arquivo `usuario.py` no diretório ```flaskAPI/src/model/dto/usuario.py`
         def to_json(self):
             return {"id":self.id, "nome":self.nome}
 
-#### 8.2.1.1 - Produto
+#### 9.2.1.1 - Produto
 Abrir o arquivo `produto.py` no diretório ```flaskAPI/src/model/dto/produto.py``` e digitar/colar o código de criação da classe Produto:
 
     from sqlalchemy import Column, String, Integer, ForeignKey
     from sqlalchemy.orm import relationship
-    from flaskAPI.src.model.dto.usuario import Base
+    from model.dto.usuario import Base
 
     ######### Criação da classe produto #########
     class Produto(Base):
@@ -302,17 +308,17 @@ Abrir o arquivo `produto.py` no diretório ```flaskAPI/src/model/dto/produto.py`
             return {"id":self.id, "usuario":{"id":self.usuario.id, "nome":self.usuario.nome}, "nome":self.nome}
 
 
-### 8.2.2 - DAO
+### 9.2.2 - DAO
 
 DAO (Data Access Object) são responsáveis por trocar informações com o SGBD e fornecer operações CRUD
 
-#### 8.2.2.1 - Usuário
+#### 9.2.2.1 - Usuário
 
 Abrir o arquivo `usuario.py` no diretório ```flaskAPI/src/model/dao/usuario.py``` e digitar/colar o código interação com o bando de dados:
 
     from config.connection import Session
-    from flaskAPI.src.model.dto.usuario import Usuario
-    from flaskAPI.src.model.dto.produto import Produto
+    from model.dto.usuario import Usuario
+    from model.dto.produto import Produto
 
     ######### Insert no bando de dados #########
     def inserirUsuario(usuario):
@@ -368,11 +374,11 @@ Abrir o arquivo `usuario.py` no diretório ```flaskAPI/src/model/dao/usuario.py`
             ######### Não existe usuário #########
             return None
 
-#### 8.2.2.1 - Produto
+#### 9.2.2.1 - Produto
 Abrir o arquivo `produto.py` no diretório ```flaskAPI/src/model/dto/produto.py``` e digitar/colar o código interação com o bando de dados:
 
     from config.connection import Session
-    from flaskAPI.src.model.dto.produto import Produto
+    from model.dto.produto import Produto
 
     ######### Insert no bando de dados #########
     def inserirProduto(produto):
@@ -427,7 +433,7 @@ Abrir o arquivo `produto.py` no diretório ```flaskAPI/src/model/dto/produto.py`
             session.close()
             return True
 
-# 9 - Configuração de acesso
+# 10 - Configuração de acesso
 
 Abra o arquivo `auth.py` no diretório `flaskAPI/src/config/auth.py` para permitir a autorização de acesso a API RESTfull, digitar/colar o seguinte código:
 
@@ -448,11 +454,11 @@ Abra o arquivo `auth.py` no diretório `flaskAPI/src/config/auth.py` para permit
             return username
         return None
 
-# 10 - Routes
+# 11 - Routes
 
 Rotas que a API RESTfull irá utilizar para o GET, POST, PUT e DELETE
 
-## 10.1 - Mapeamento das rotas
+## 11.1 - Mapeamento das rotas
 
 Abra a arquivo `__init__.py` no diretório `flaskAPI/src/routes/__init__.py` e digitar/colar o seguinte código:
 
@@ -473,8 +479,8 @@ Abra a arquivo `__init__.py` no diretório `flaskAPI/src/routes/__init__.py` e d
         ######### Retorna as rotas #########
         return app
 
-## 10.2 - Usuário
-### 10.2.1 - Mapeamento usuário
+## 11.2 - Usuário
+### 11.2.1 - Mapeamento usuário
 
 Abra a arquivo `__init__.py` no diretório `flaskAPI/src/routes/usuario/__init__.py` e digitar/colar o seguinte código:
 
@@ -484,7 +490,7 @@ Abra a arquivo `__init__.py` no diretório `flaskAPI/src/routes/usuario/__init__
 
     from . import usuario
 
-### 10.2.2 - Rota Usuário
+### 11.2.2 - Rota Usuário
 
 Abra a arquivo `usuario.py` no diretório `flaskAPI/src/routes/usuario/usuario.py` e digitar/colar o seguinte código:
 
@@ -573,8 +579,8 @@ Abra a arquivo `usuario.py` no diretório `flaskAPI/src/routes/usuario/usuario.p
             body["mensagem"] = mensagem
         return Response(json.dumps(body), status=status, mimetype="application/json")
 
-## 10.3 - Produto
-### 10.3.1 - Mapeamento produto
+## 11.3 - Produto
+### 11.3.1 - Mapeamento produto
 
 Abra a arquivo `__init__.py` no diretório `flaskAPI/src/routes/produto/__init__.py` e digitar/colar o seguinte código:
 
@@ -584,7 +590,7 @@ Abra a arquivo `__init__.py` no diretório `flaskAPI/src/routes/produto/__init__
 
     from . import produto
 
-### 10.3.2 - Rota Produto
+### 11.3.2 - Rota Produto
 
 Abra a arquivo `produto.py` no diretório `flaskAPI/src/routes/produto/produto.py` e digitar/colar o seguinte código:
 
@@ -673,3 +679,104 @@ Abra a arquivo `produto.py` no diretório `flaskAPI/src/routes/produto/produto.p
         if(mensagem):
             body["mensagem"] = mensagem
         return Response(json.dumps(body), status=status, mimetype="application/json")
+
+# 12 - Inicializar API
+
+No terminal, dentro o ambiente virtual, digitar/colar o seguinte comando:  
+**Observação: certifique-se de que o diretório no terminal esteja sendo executado em `flaskAPI/src`**
+
+    python main.py
+
+# 13 - Consumir Flask API
+
+Para consumir Flask API, lembre-se que é necessário informar os dados de **Authorization** (*autorização*) do tipo **Basic** no ***Postman*** ou ***Insomnia***  
+**Observação: Deve informar estes dados de autorização, para cada requisição GET, POST, PUT E DELETE**
+
+**Username:**
+
+    aluno
+
+**Password:**
+
+    123
+
+## 13.1 - Usuário
+
+### 13.1.1 - POST
+
+URL de acesso:
+
+    http://127.0.0.1:5000/usuario/usuario
+
+Padrão *JSON* para envio de dados:
+
+    {
+        "nome": "Rafael"
+    }
+
+### 13.1.2 - GET
+URL de acesso:
+
+    http://127.0.0.1:5000/usuario/usuario/1
+
+### 13.1.3 - GET ALL
+URL de acesso:
+
+    http://127.0.0.1:5000/usuario/usuarios
+
+### 13.1.4 - PUT
+URL de acesso:
+
+    http://127.0.0.1:5000/usuario/usuario/1
+
+Padrão *JSON* para envio de dados:
+
+    {
+        "nome": "Rafael Feitosa"
+    }
+
+### 13.1.5 - DELETE
+URL de acesso:
+
+    http://127.0.0.1:5000/usuario/usuario/1
+
+## 13.2 - Produto
+
+### 13.2.1 - POST
+
+URL de acesso:
+
+    http://127.0.0.1:5000/produto/produto
+
+Padrão *JSON* para envio de dados:
+
+    {
+        "usuarioId": 1,
+        "nome": "Arroz"
+    }
+
+### 13.2.2 - GET
+URL de acesso:
+
+    http://127.0.0.1:5000/produto/produto/1
+
+### 13.2.3 - GET ALL
+URL de acesso:
+
+    http://127.0.0.1:5000/produto/produtos
+
+### 13.2.4 - PUT
+URL de acesso:
+
+    http://127.0.0.1:5000/produto/produto/1
+
+Padrão *JSON* para envio de dados:
+
+    {
+        "nome": "Melancia"
+    }
+
+### 13.2.5 - DELETE
+URL de acesso:
+
+    http://127.0.0.1:5000/produto/produto/1
