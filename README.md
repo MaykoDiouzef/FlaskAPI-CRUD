@@ -1,4 +1,17 @@
-# [Projeto FlaskAPI](https://github.com/MaykoDiouzef/FlaskAPI-CRUD)
+<div style="text-align: center;">
+
+**INSTITUTO FEDERAL GOIANO – CAMPUS CERES**  
+**BACHARELADO EM SISTEMAS DE INFORMAÇÃO**  
+**DESENVOLVIMENTO DE SOFTWARE BASEADO EM FRAMEWORKS**
+
+**[DAIANNY EVILLIN COSTA DE OLIVEIRA](https://github.com/DaiannyEvillin)**  
+**[KALITA STEPHANE ALVES DE ALMEIDA](https://github.com/Kalita-Stephane)**  
+**[MAYKO DIOUZEF MENDES DO AMARAL](https://github.com/MaykoDiouzef)**
+</br></br>
+
+# [Projeto Flask API](https://github.com/MaykoDiouzef/FlaskAPI-CRUD)
+
+</div>
 
 # 1 - Introdução ao Flask
 
