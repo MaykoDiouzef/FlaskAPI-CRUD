@@ -120,8 +120,6 @@ Para instalar as bibliotecas no ambiente virtual, digite/cole o seguinte comando
 
 O *MariaDB* Server é um dos bancos de dados relacionais de código aberto mais populares. Ele é feito pelos desenvolvedores originais do *MySQL* e tem garantia de permanecer de código aberto. Ele faz parte da maioria das ofertas de nuvem e é o padrão na maioria das distribuições Linux.
 
-## 6.1 - Código SQL MariaDB
-
 Salvar o código SQL MariaDB no arquivo `script.sql` no diretório ```flaskAPI/sql/script.sql```
 
     -- Adminer 4.8.1 MySQL 11.3.2-MariaDB-1:11.3.2+maria~ubu2204 dump
@@ -286,7 +284,7 @@ Abrir o arquivo `usuario.py` no diretório ```flaskAPI/src/model/dto/usuario.py`
         def to_json(self):
             return {"id":self.id, "nome":self.nome}
 
-#### 9.2.1.1 - Produto
+#### 9.2.1.2 - Produto
 Abrir o arquivo `produto.py` no diretório ```flaskAPI/src/model/dto/produto.py``` e digitar/colar o código de criação da classe Produto:
 
     from sqlalchemy import Column, String, Integer, ForeignKey
@@ -374,7 +372,7 @@ Abrir o arquivo `usuario.py` no diretório ```flaskAPI/src/model/dao/usuario.py`
             ######### Não existe usuário #########
             return None
 
-#### 9.2.2.1 - Produto
+#### 9.2.2.2 - Produto
 Abrir o arquivo `produto.py` no diretório ```flaskAPI/src/model/dto/produto.py``` e digitar/colar o código interação com o bando de dados:
 
     from config.connection import Session
