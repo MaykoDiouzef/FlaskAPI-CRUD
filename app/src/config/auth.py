@@ -5,7 +5,7 @@ auth = HTTPBasicAuth()
 
 ######### usuario e senha de acesso a API #########
 users = {
-    "admin": generate_password_hash("password"),
+    "aluno": generate_password_hash("123"),
 }
 
 ######### verificaçaõ de usuario e senha de acesso a API #########

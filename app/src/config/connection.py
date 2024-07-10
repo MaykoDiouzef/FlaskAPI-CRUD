@@ -10,7 +10,7 @@ driver = "pymysql"
 user = "root"
 password = "123456789"
 host = "localhost"
-port = "3309"
+port = "3306"
 dbname = "db-flask"
 
 ######### Conexão ao banco de dados #########
